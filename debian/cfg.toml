@@ -1,0 +1,12 @@
+# Wait minimum ammout of minutes between batch of notifications
+wait_min = 1
+# Wait maximum ammout of minutes between batch of notifications
+wait_max = 5
+# Ammount of notifications sent on a batch
+notifications = 3
+# If critical is set to true, your DE should give the notifications
+# a diferent look and will probably remove the timeout.
+# Making it requiered to close it manually
+# If you set this to true, I recommend to make the wait intervals bigger,
+# otherwise you coud make your screen filled with notifications
+critical = false

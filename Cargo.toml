@@ -1,0 +1,39 @@
+[package]
+name = "fix-your-back"
+version = "0.1.1"
+edition = "2021"
+
+[package.metadata.deb]
+maintainer = "Feli Dobrinin <felidobrinin@proton.me>"
+copyright = "2024, Feli Dobrinin <felidobrinin@proton.me>"
+license-file = ["LICENSE", "4"]
+extended-description = """\
+A simple tool to remind you to fix your posture :D."""
+depends = "$auto, systemd"
+section = "utility"
+priority = "optional"
+assets = [
+    [
+        "debian/cfg.toml",
+        "/etc/fix-your-back/",
+        "644",
+    ],
+    [
+        "target/release/fix-your-back",
+        "/usr/bin/",
+        "755",
+    ],
+    [
+        "debian/fix-your-back.service",
+        "/usr/lib/systemd/system/",
+        "644",
+    ],
+]
+maintainer-scripts = "debian/scripts"
+
+[dependencies]
+notify-rust = "4"
+rand = "0.8.5"
+anyhow = "1.0.86"
+serde = "1.0.204"
+toml = "0.8.17"

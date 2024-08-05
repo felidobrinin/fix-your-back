@@ -1,0 +1,6 @@
+#!/bin/bash
+# ---------------- Runs after install ----------------
+echo " ---------------- Post Install  ----------------"
+systemctl daemon-reload
+systemctl enable fix-your-back
+systemctl start fix-your-back

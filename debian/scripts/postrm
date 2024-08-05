@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# ---------------- Runs after removal ----------------
+echo " ---------------- Post Remove  ----------------"
+# Reload systemd config files
+systemctl daemon-reload

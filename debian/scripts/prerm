@@ -1,0 +1,11 @@
+#!/bin/sh
+# ---------------- Runs before removal ----------------
+echo "---------------- Pre Remove  ----------------"
+STATUS="$(systemctl is-enabled fix-your-back)"
+if [ "${STATUS}" = "enabled" ]; then
+    systemctl disable fix-your-back
+fi
+STATUS="$(systemctl is-active fix-your-back.service)"
+if [ "${STATUS}" = "active" ]; then
+    systemctl stop fix-your-back
+fi

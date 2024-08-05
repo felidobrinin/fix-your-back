@@ -1,0 +1,13 @@
+[Unit]
+Description="Recordatorio para arreglar la espalda"
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=fely
+ExecStart=/usr/bin/fix-your-back
+
+[Install]
+WantedBy=graphical.target
