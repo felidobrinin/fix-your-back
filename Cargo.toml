@@ -2,6 +2,7 @@
 name = "fix-your-back"
 version = "0.1.1"
 edition = "2021"
+description = "A simple tool to remind you to fix your posture :D."
 
 [package.metadata.deb]
 maintainer = "Feli Dobrinin <felidobrinin@proton.me>"
@@ -37,3 +38,14 @@ rand = "0.8.5"
 anyhow = "1.0.86"
 serde = "1.0.204"
 toml = "0.8.17"
+
+# This project would be criminal to have a "big" binary.
+# So I do some size optimizations in detriment of compile times,
+# because I dont really care for 30 seconds of compile time.
+# If you actually care just comment the following lines
+[profile.release]
+strip = true # Automatically strip symbols from the binary.
+# opt-level = "z"   # Optimize for size. TODO : check changes in resource utilization. GOT 200k less in binary size with this
+lto = true        # Better linking, slower compiling
+codegen-units = 1 # Better optimizations, slower compiling. NOT MUCH GAINS
+panic = "abort"   # NOT MUCH GAINS
