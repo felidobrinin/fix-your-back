@@ -14,6 +14,8 @@ struct Config {
     notifications: u64,
     // Makes the notifications critical
     critical: bool,
+    // Notification lifespan in seconds
+    lifespan: u64,
 }
 
 fn main() -> Result<()> {
@@ -47,7 +49,7 @@ fn main() -> Result<()> {
                     true => notify_rust::Urgency::Critical,
                     false => notify_rust::Urgency::Normal,
                 })
-                // .timeout(Duration::from_secs(5)) // 5 seconds of wait before closing the notifications automatically
+                .timeout(Duration::from_secs(10)) // 5 seconds of wait before closing the notifications automatically
                 .show()
                 .unwrap();
             thread::sleep(Duration::from_millis(1000));
@@ -63,6 +65,7 @@ fn read_config(cfg_path: &str) -> Result<Config> {
         wait_min: cfg.wait_min.clamp(1, 60 * 24),
         wait_max: cfg.wait_max.clamp(1, 60 * 24),
         notifications: cfg.notifications.clamp(1, 10),
+        lifespan: cfg.lifespan.clamp(3, 60 * 24),
         critical: cfg.critical,
     })
 }

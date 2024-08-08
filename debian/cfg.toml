@@ -10,3 +10,5 @@ notifications = 3
 # If you set this to true, I recommend to make the wait intervals bigger,
 # otherwise you coud make your screen filled with notifications
 critical = false
+# The ammount of seconds before the notifications goes away
+lifespan = 10
